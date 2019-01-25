@@ -1,0 +1,60 @@
+{
+  "name": "@polpware/fe-utilities",
+  "version": "3.0.0",
+  "description": "A set of utilties on url, array, string, data, promise, and more",
+  "main": "bundles/polpware-fe-utilities.umd.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polpware/polpware-fe-utilities.git"
+  },
+  "keywords": [
+    "utilities"
+  ],
+  "author": "Tom Tang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/polpware/polpware-fe-utilities/issues"
+  },
+  "homepage": "https://github.com/polpware/polpware-fe-utilities#readme",
+  "devDependencies": {
+    "@angular/compiler": "^7.2.1",
+    "@angular/compiler-cli": "^7.2.1",
+    "@angular/core": "^7.2.1",
+    "@types/jasmine": "3.3.5",
+    "gulp": "^4.0.0",
+    "gulp-ignore": "^2.0.2",
+    "gulp-typedoc": "^2.2.1",
+    "jasmine": "^3.3.1",
+    "jasmine-core": "^3.3.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "karma": "^3.1.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^2.0.4",
+    "karma-jasmine": "^2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-typescript": "^3.0.13",
+    "ng-packagr": "^4.6.0",
+    "phantomjs": "^2.1.7",
+    "rxjs": "^6.3.3",
+    "ts-node": "^7.0.1",
+    "tsickle": "^0.34.0",
+    "tslib": "^1.9.3",
+    "tslint": "^5.12.1",
+    "typedoc": "^0.14.2",
+    "typescript": "3.2.x",
+    "zone.js": "~0.8.28"
+  },
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "module": "fesm5/polpware-fe-utilities.js",
+  "es2015": "fesm2015/polpware-fe-utilities.js",
+  "esm5": "esm5/polpware-fe-utilities.js",
+  "esm2015": "esm2015/polpware-fe-utilities.js",
+  "fesm5": "fesm5/polpware-fe-utilities.js",
+  "fesm2015": "fesm2015/polpware-fe-utilities.js",
+  "typings": "polpware-fe-utilities.d.ts",
+  "metadata": "polpware-fe-utilities.metadata.json",
+  "sideEffects": false
+}
