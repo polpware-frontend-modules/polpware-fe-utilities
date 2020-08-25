@@ -1,17 +1,9 @@
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
  * Generates a guid.
- * @return {?}
  */
 function guid() {
-    /** @type {?} */
     var d = new Date().getTime();
-    /** @type {?} */
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        /** @type {?} */
         var r = (d + Math.random() * 16) % 16 | 0;
         d = Math.floor(d / 16);
         return (c === 'x' ? r : (r & 0x7 | 0x8)).toString(16);
@@ -20,24 +12,13 @@ function guid() {
 }
 /**
  * Generates a random number between the given range
- * @param {?} min
- * @param {?} max
- * @return {?}
  */
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
  * Encodes a key-value pair, where a value can be an array.
- * @param {?} key
- * @param {?} value
- * @param {?} str
- * @return {?}
  */
 function urlEncodePair(key, value, str) {
     if (value instanceof Array) {
@@ -51,11 +32,8 @@ function urlEncodePair(key, value, str) {
 }
 /**
  * Encodes an object in www form.
- * @param {?} data
- * @return {?}
  */
 function urlEncode(data) {
-    /** @type {?} */
     var str = [];
     for (var p in data) {
         if (data.hasOwnProperty(p)) {
@@ -64,16 +42,9 @@ function urlEncode(data) {
     }
     return str.join('&').replace(/%20/g, '+');
 }
-/**
- * @param {?} name
- * @param {?} url
- * @return {?}
- */
 function getParamByName(name, url) {
     name = name.replace(/[\[\]]/g, '\\$&');
-    /** @type {?} */
     var regex = new RegExp('[?#&]' + name + '(=([^&#]*)|&|#|$)');
-    /** @type {?} */
     var results = regex.exec(url);
     if (!results) {
         return null;
@@ -83,22 +54,12 @@ function getParamByName(name, url) {
     }
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
-/**
- * @param {?} name
- * @param {?=} url
- * @return {?}
- */
 function getQueryParamByName(name, url) {
     if (!url) {
         url = window.location.href;
     }
     return getParamByName(name, url);
 }
-/**
- * @param {?} name
- * @param {?=} url
- * @return {?}
- */
 function getHashParamByName(name, url) {
     if (!url) {
         url = window.location.hash;
@@ -107,15 +68,7 @@ function getHashParamByName(name, url) {
 }
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
  * Pushs an array or a single value into the thisArg;
- * @template T
- * @param {?} thisArg
- * @param {?} src
- * @return {?}
  */
 function pushArray(thisArg, src) {
     if (!(src instanceof Array)) {
@@ -128,11 +81,8 @@ function pushArray(thisArg, src) {
 }
 /**
  * Turns the values in an object into an array
- * @param {?} o
- * @return {?}
  */
 function makeArray(o) {
-    /** @type {?} */
     var ret = [];
     for (var n in o) {
         if (o.hasOwnProperty(n)) {
@@ -143,14 +93,7 @@ function makeArray(o) {
 }
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
  * Replaces the placeholders a given format with the given parameters.
- * @param {?} format
- * @param {?} params
- * @return {?}
  */
 function replace(format, params) {
     /*jslint unparam: true */
@@ -162,8 +105,6 @@ function replace(format, params) {
  * Transforms the given string into one where
  * some characters have been properly replaced with
  * their escape versions.
- * @param {?} data
- * @return {?}
  */
 function applyEscape(data) {
     data = data
@@ -180,8 +121,6 @@ function applyEscape(data) {
 /**
  * Undo the work by applyEscape. It replaces the escape
  * characters with their unescaped ones.
- * @param {?} data
- * @return {?}
  */
 function reverseEscape(data) {
     data = data
@@ -196,18 +135,7 @@ function reverseEscape(data) {
     return data;
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 // firstSet - secondSet (any element not in secondSet)
-/**
- * @template T, U
- * @param {?} firstSet
- * @param {?} secondSet
- * @param {?} predicate
- * @return {?}
- */
 function diff(firstSet, secondSet, predicate) {
     return firstSet.filter(function (x) {
         return !secondSet.some(function (y) {
@@ -216,13 +144,6 @@ function diff(firstSet, secondSet, predicate) {
     });
 }
 // firstSet intersection secondSet
-/**
- * @template T, U
- * @param {?} firstSet
- * @param {?} secondSet
- * @param {?} predicate
- * @return {?}
- */
 function intersection(firstSet, secondSet, predicate) {
     return firstSet.filter(function (x) {
         return secondSet.some(function (y) {
@@ -231,10 +152,6 @@ function intersection(firstSet, secondSet, predicate) {
     });
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 /*
 BasicTypes :=
     boolean
@@ -247,90 +164,48 @@ BasicTypes :=
   | object
   | function
 */
-/**
- * @param {?} x
- * @return {?}
- */
 function isBoolean(x) {
     return typeof x === 'boolean';
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isNumber(x) {
     return typeof x === 'number';
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isString(x) {
     return typeof x === 'string';
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isSymbol(x) {
     return typeof x === 'symbol';
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isNull(x) {
     return x === null;
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isUndefined(x) {
     return x === undefined;
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isArray(x) {
     return x instanceof Array;
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isObject(x) {
     return typeof x === 'object';
 }
-/**
- * @param {?} x
- * @return {?}
- */
 function isFunction(x) {
     return typeof x === 'function';
 }
-/** @type {?} */
+;
 var tyBool = { name: 'Boolean', val: false, pred: isBoolean };
-/** @type {?} */
 var tyNull = { name: 'Null', val: null, pred: isNull };
-/** @type {?} */
 var tyUndefined = { name: 'Undefined', val: undefined, pred: isUndefined };
-/** @type {?} */
 var tyNumber = { name: 'Number', val: 0, pred: isNumber };
-/** @type {?} */
 var tyString = { name: 'String', val: '', pred: isString };
-/** @type {?} */
 var tySymbol = { name: 'Symbol', val: null, pred: isSymbol };
-/** @type {?} */
-var tyObject = { name: 'Object', val: function () { return {}; }, pred: isObject };
-/** @type {?} */
-var tyArray = { name: 'Array', val: function () { return []; }, pred: isArray };
-/** @type {?} */
-var tyFunction = { name: 'Function', val: function () { }, pred: isFunction };
+var ɵ0 = function () { return {}; };
+var tyObject = { name: 'Object', val: ɵ0, pred: isObject };
+var ɵ1 = function () { return []; };
+var tyArray = { name: 'Array', val: ɵ1, pred: isArray };
+var ɵ2 = function () { };
+var tyFunction = { name: 'Function', val: ɵ2, pred: isFunction };
 /**
  *  Predefined types and their properties.
- * @type {?}
  */
 var preDefinedTypes = {
     tyBool: tyBool,
@@ -345,11 +220,8 @@ var preDefinedTypes = {
 };
 /**
  * Returns the default value for a given type.
- * @param {?} ty
- * @return {?}
  */
 function defaultValue(ty) {
-    /** @type {?} */
     var val = ty.val;
     if (ty !== tyFunction && typeof val === 'function') {
         val = val();
@@ -358,17 +230,12 @@ function defaultValue(ty) {
 }
 /**
  * Type checks if a given value is type of the given ty
- * @param {?} value
- * @param {?} ty
- * @return {?}
  */
 function ok(value, ty) {
     return ty.pred(value);
 }
 /**
  * Returns the type for the given value.
- * @param {?} value
- * @return {?}
  */
 function getType(value) {
     for (var prop in preDefinedTypes) {
@@ -378,11 +245,6 @@ function getType(value) {
     }
     return null;
 }
-/**
- * @param {?} value
- * @param {?} ty
- * @return {?}
- */
 function assert(value, ty) {
     if (ok(value, ty)) {
         return;
@@ -392,18 +254,15 @@ function assert(value, ty) {
 }
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @fileOverview
+ * Provides utilities for computing hash values
  */
 /**
  * Computes the hash code for a given value.
  * This method takes into account the type of the given
  * value when generating its hash code.
- * @param {?} value
- * @return {?}
  */
 function hashCode(value) {
-    /** @type {?} */
     var hash = 0;
     if (ok(value, tyBool)) {
         value = value ? 1 : 0;
@@ -422,7 +281,6 @@ function hashCode(value) {
     }
     /*jslint plusplus: true */
     for (var i = 0, len = value.length; i < len; i++) {
-        /** @type {?} */
         var chr = value.charCodeAt(i);
         hash = ((hash << 5) - hash) + chr;
         hash |= 0; // Convert to 32bit integer
@@ -431,16 +289,10 @@ function hashCode(value) {
 }
 /**
  * Computes the hash code for a member of an object.
- * @param {?} name
- * @param {?} value
- * @param {?} configuration
- * @return {?}
  */
 function hashPrimitiveMember(name, value, configuration) {
-    /** @type {?} */
     var code = hashCode(value);
     if (configuration) {
-        /** @type {?} */
         var bits = configuration[name];
         if (bits) {
             return code << configuration[name];
@@ -453,14 +305,9 @@ function hashPrimitiveMember(name, value, configuration) {
  * the given member member, the value to be hashed, and the configuration
  * about how each member contributes to the enire hash code of the
  * object.
- * @param {?} name
- * @param {?} value
- * @param {?} configuration
- * @return {?}
  */
 function hashMember(name, value, configuration) {
     if (ok(value, tyArray)) {
-        /** @type {?} */
         var code = 0;
         /*jslint plusplus: true */
         for (var i = 0; i < value.length; i++) {
@@ -471,14 +318,6 @@ function hashMember(name, value, configuration) {
     return hashPrimitiveMember(name, value, configuration);
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * @param {?} value
- * @return {?}
- */
 function safeParseString(value) {
     if (!value) {
         return '';
@@ -487,8 +326,6 @@ function safeParseString(value) {
 }
 /**
  * Parses a given value into an integer.
- * @param {?} value
- * @return {?}
  */
 function safeParseInt(value) {
     if (!value) {
@@ -504,8 +341,6 @@ function safeParseInt(value) {
 }
 /**
  * Parses a given value into a float number.
- * @param {?} value
- * @return {?}
  */
 function safeParseFloat(value) {
     if (!value) {
@@ -521,8 +356,6 @@ function safeParseFloat(value) {
 }
 /**
  * Parses a given value into a bool value.
- * @param {?} value
- * @return {?}
  */
 function safeParseBool(value) {
     if (!value) {
@@ -541,9 +374,6 @@ function safeParseBool(value) {
 }
 /**
  * Returns if a given value can be safely converted into the given type.
- * @param {?} value
- * @param {?} ty
- * @return {?}
  */
 function convertible(value, ty) {
     if (ok(value, ty)) {
@@ -560,9 +390,6 @@ function convertible(value, ty) {
 }
 /**
  * Safely converts the given value into a value of the given type.
- * @param {?} value
- * @param {?} ty
- * @return {?}
  */
 function convert(value, ty) {
     if (ty === tyNumber) {
@@ -577,10 +404,6 @@ function convert(value, ty) {
     throw new Error('Cannot convert the given value to the given type');
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 // 
 // Author:: Tom Tang <principleware@gmail.com>
 // Copyright:: Copyright (c) 2017, Tom Tang
@@ -608,38 +431,23 @@ function convert(value, ty) {
 // holders shall not be used in advertising or otherwise to promote the
 // sale, use or other dealings in this Software without prior written
 // authorization.
-/**
- * @param {?} fn
- * @return {?}
- */
 function asap(fn) {
     setTimeout(fn, 1);
 }
-/**
- * @param {?} fn
- * @param {?} thisArg
- * @return {?}
- */
 function bind(fn, thisArg) {
     return function () {
         fn.apply(thisArg, arguments);
     };
 }
-var ɵ0 = function (value) { return Object.prototype.toString.call(value) === "[object Array]"; };
-/** @type {?} */
-var isArray$1 = Array.isArray || ɵ0;
+var ɵ0$1 = function (value) { return Object.prototype.toString.call(value) === "[object Array]"; };
+var isArray$1 = Array.isArray || ɵ0$1;
 /**
  * Take a potentially misbehaving resolver function and make sure
  * onFulfilled and onRejected are only called once.
  *
  * Makes no guarantees about asynchrony.
- * @param {?} fn
- * @param {?} onFulfilled
- * @param {?} onRejected
- * @return {?}
  */
 function doResolve(fn, onFulfilled, onRejected) {
-    /** @type {?} */
     var done = false;
     try {
         fn(function (value) {
@@ -664,22 +472,14 @@ function doResolve(fn, onFulfilled, onRejected) {
         onRejected(ex);
     }
 }
-/**
- * @param {?} deferred
- * @return {?}
- */
 function handle(deferred) {
-    /** @type {?} */
     var me = this;
     if (this._state === null) {
         this._deferreds.push(deferred);
         return;
     }
     asap(function () {
-        /** @type {?} */
-        var cb;
-        /** @type {?} */
-        var ret;
+        var cb, ret;
         cb = me._state ? deferred.onFulfilled : deferred.onRejected;
         if (cb === null) {
             (me._state ? deferred.resolve : deferred.reject)(me._value);
@@ -695,40 +495,25 @@ function handle(deferred) {
         deferred.resolve(ret);
     });
 }
-/**
- * @return {?}
- */
 function finale() {
-    /** @type {?} */
-    var i;
-    /** @type {?} */
-    var len;
+    var i, len;
     /*jslint plusplus:true */
     for (i = 0, len = this._deferreds.length; i < len; i++) {
         handle.call(this, this._deferreds[i]);
     }
     this._deferreds = null;
 }
-/**
- * @param {?} newValue
- * @return {?}
- */
 function reject(newValue) {
     this._state = false;
     this._value = newValue;
     finale.call(this);
 }
-/**
- * @param {?} newValue
- * @return {?}
- */
 function resolve(newValue) {
     try { //Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
         if (newValue === this) {
             throw new TypeError('A promise cannot be resolved with itself.');
         }
         if (newValue && (typeof newValue === 'object' || typeof newValue === 'function')) {
-            /** @type {?} */
             var then = newValue.then;
             if (typeof then === 'function') {
                 doResolve(bind(then, newValue), bind(resolve, this), bind(reject, this));
@@ -749,9 +534,6 @@ function resolve(newValue) {
  * This resulted object is also a jQuery deferred object, therefore,
  * it will be resolved by the jQuery deferred object if it is a resolved value in
  * the jQuery deferred object.
- * @template T
- * @param {?} fn
- * @return {?}
  */
 function DummyPromise(fn) {
     if (typeof this !== 'object') {
@@ -765,13 +547,6 @@ function DummyPromise(fn) {
     this._deferreds = [];
     doResolve(fn, bind(resolve, this), bind(reject, this));
 }
-/**
- * @param {?} onFulfilled
- * @param {?} onRejected
- * @param {?} resolve
- * @param {?} reject
- * @return {?}
- */
 function Handler(onFulfilled, onRejected, resolve, reject) {
     this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
     this.onRejected = typeof onRejected === 'function' ? onRejected : null;
@@ -782,32 +557,21 @@ DummyPromise.prototype['catch'] = function (onRejected) {
     return this.then(null, onRejected);
 };
 DummyPromise.prototype.then = function (onFulfilled, onRejected) {
-    /** @type {?} */
     var me = this;
     return new DummyPromise(function (resolve, reject) {
         handle.call(me, new Handler(onFulfilled, onRejected, resolve, reject));
     });
 };
 DummyPromise.prototype.all = function (arrayArg) {
-    /** @type {?} */
     var args = Array.prototype.slice.call(arguments.length === 1 && isArray$1(arrayArg) ? arrayArg : arguments);
     return new DummyPromise(function (resolve, reject) {
         if (args.length === 0) {
             return resolve([]);
         }
-        /** @type {?} */
-        var remaining = args.length;
-        /** @type {?} */
-        var i;
-        /**
-         * @param {?} i
-         * @param {?} val
-         * @return {?}
-         */
+        var remaining = args.length, i;
         function res(i, val) {
             try {
                 if (val && (typeof val === 'object' || typeof val === 'function')) {
-                    /** @type {?} */
                     var then = val.then;
                     if (typeof then === 'function') {
                         then.call(val, function (val) { res(i, val); }, reject);
@@ -845,10 +609,7 @@ DummyPromise.prototype.reject = function (value) {
 };
 DummyPromise.prototype.race = function (values) {
     return new DummyPromise(function (resolve, reject) {
-        /** @type {?} */
-        var i;
-        /** @type {?} */
-        var len;
+        var i, len;
         /*jslint plusplus: true */
         for (i = 0, len = values.length; i < len; i++) {
             values[i].then(resolve, reject);
@@ -871,10 +632,7 @@ DummyPromise.prototype.progress = function () {
     return this;
 };
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+// 
 /**
  * Lifts a single value or a function into a Promise-like object.
  * Provides a method of wrapping a single value or a function  into a Promise,
@@ -887,22 +645,16 @@ DummyPromise.prototype.progress = function () {
  * asynchronously. Loading a value asynchronously usually returns
  * a Promise. To untify the return from two cases, we
  * escalate a single value into a Promise.
- * @template T
- * @param {?} value
- * @param {?} thisArg
- * @return {?}
  */
 function lift(value, thisArg) {
     /*jslint unparam: true */
     return new DummyPromise(function (resolve, reject) {
         if (isFunction(value)) {
-            /** @type {?} */
             var restArgs = [];
             /*jslint plusplus: true */
             for (var i = 2; i < arguments.length; i++) {
                 restArgs.push(arguments[i]);
             }
-            /** @type {?} */
             var ret = value.apply(thisArg || null, restArgs);
             resolve(ret);
         }
@@ -913,9 +665,6 @@ function lift(value, thisArg) {
 }
 /**
  * Lifts a value into an rejected state.
- * @template T
- * @param {?} value
- * @return {?}
  */
 function liftIntoReject(value) {
     return new DummyPromise(function (resolve, reject) {
@@ -926,10 +675,6 @@ function liftIntoReject(value) {
 /**
  * Converts a given promise into another promise which ensures that
  * the given guard evalutes to be true from the state of the given promise.
- * @template T
- * @param {?} promise
- * @param {?} guard
- * @return {?}
  */
 function liftWithGuard(promise, guard) {
     return promise.then(function (data) {
@@ -945,9 +690,6 @@ function liftWithGuard(promise, guard) {
 }
 /**
  * Settles a promise.
- * @template T
- * @param {?} promise
- * @return {?}
  */
 function settle(promise) {
     return new DummyPromise(function (resolve) {
@@ -965,10 +707,6 @@ function settle(promise) {
 }
 /**
  * Converts the given promise into a promise which does not reject anything.
- * @template T
- * @param {?} promise
- * @param {?} guard
- * @return {?}
  */
 function liftToPredicate(promise, guard) {
     return new DummyPromise(function (resolve, reject) {
@@ -984,10 +722,6 @@ function liftToPredicate(promise, guard) {
  * Transforms a given promise with additonal pipeline processing.
  * Specifically, in this method, compared to the given promise, the return
  * promise contains validating and adpating stages.
- * @template T, U
- * @param {?} readerPromise
- * @param {?} settings
- * @return {?}
  */
 function readerPipeline(readerPromise, settings) {
     return readerPromise
@@ -1005,9 +739,6 @@ function readerPipeline(readerPromise, settings) {
 }
 /**
  * Transforms a given promise into one promise with our own implementation.
- * @template T
- * @param {?} promise
- * @return {?}
  */
 function transform(promise) {
     return new DummyPromise(function (resolve, reject) {
@@ -1015,10 +746,6 @@ function transform(promise) {
     });
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 /**
  * @fileOverview
  * Provides utilities for making interoperable the promise-like objects
@@ -1028,8 +755,6 @@ function transform(promise) {
  * Extends a given promise into a deferred object of jQuery.
  * With this extension, we are able to chain together jQuery deferred
  * objects (which are also promise objects.)
- * @param {?} promise
- * @return {?}
  */
 function tojQueryDeferred(promise) {
     if (!promise.always) {
@@ -1061,15 +786,8 @@ function tojQueryDeferred(promise) {
 }
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { guid, getRandomInt, urlEncodePair, urlEncode, getParamByName, getQueryParamByName, getHashParamByName, pushArray, makeArray, replace, applyEscape, reverseEscape, diff, intersection, hashCode, hashMember, safeParseString, safeParseInt, safeParseFloat, safeParseBool, convertible, convert, isBoolean, isNumber, isString, isSymbol, isNull, isUndefined, isArray, isObject, isFunction, defaultValue, ok, getType, assert, tyBool, tyNull, tyUndefined, tyNumber, tyString, tySymbol, tyObject, tyArray, tyFunction, lift, liftIntoReject, liftWithGuard, settle, liftToPredicate, readerPipeline, transform, tojQueryDeferred, DummyPromise };
-
+export { DummyPromise, applyEscape, assert, convert, convertible, defaultValue, diff, getHashParamByName, getParamByName, getQueryParamByName, getRandomInt, getType, guid, hashCode, hashMember, intersection, isArray, isBoolean, isFunction, isNull, isNumber, isObject, isString, isSymbol, isUndefined, lift, liftIntoReject, liftToPredicate, liftWithGuard, makeArray, ok, pushArray, readerPipeline, replace, reverseEscape, safeParseBool, safeParseFloat, safeParseInt, safeParseString, settle, tojQueryDeferred, transform, tyArray, tyBool, tyFunction, tyNull, tyNumber, tyObject, tyString, tySymbol, tyUndefined, urlEncode, urlEncodePair, ɵ0, ɵ1, ɵ2 };
 //# sourceMappingURL=polpware-fe-utilities.js.map
