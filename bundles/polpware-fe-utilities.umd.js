@@ -163,6 +163,7 @@
       boolean
     | number
     | string
+    | date
     | symbol
     | null
     | undefined
@@ -178,6 +179,9 @@
   }
   function isString(x) {
       return typeof x === 'string';
+  }
+  function isDate(x) {
+      return Object.prototype.toString.call(x) === '[object Date]';
   }
   function isSymbol(x) {
       return typeof x === 'symbol';
@@ -203,13 +207,15 @@
   var tyUndefined = { name: 'Undefined', val: undefined, pred: isUndefined };
   var tyNumber = { name: 'Number', val: 0, pred: isNumber };
   var tyString = { name: 'String', val: '', pred: isString };
+  var ɵ0 = function () { return Date.now(); };
+  var tyDate = { name: 'Object', val: ɵ0, pred: isDate };
   var tySymbol = { name: 'Symbol', val: null, pred: isSymbol };
-  var ɵ0 = function () { return {}; };
-  var tyObject = { name: 'Object', val: ɵ0, pred: isObject };
-  var ɵ1 = function () { return []; };
-  var tyArray = { name: 'Array', val: ɵ1, pred: isArray };
-  var ɵ2 = function () { };
-  var tyFunction = { name: 'Function', val: ɵ2, pred: isFunction };
+  var ɵ1 = function () { return {}; };
+  var tyObject = { name: 'Object', val: ɵ1, pred: isObject };
+  var ɵ2 = function () { return []; };
+  var tyArray = { name: 'Array', val: ɵ2, pred: isArray };
+  var ɵ3 = function () { };
+  var tyFunction = { name: 'Function', val: ɵ3, pred: isFunction };
   /**
    *  Predefined types and their properties.
    */
@@ -219,6 +225,7 @@
       tyUndefined: tyUndefined,
       tyNumber: tyNumber,
       tyString: tyString,
+      tyDate: tyDate,
       tySymbol: tySymbol,
       tyObject: tyObject,
       tyArray: tyArray,
@@ -809,6 +816,7 @@
   exports.intersection = intersection;
   exports.isArray = isArray;
   exports.isBoolean = isBoolean;
+  exports.isDate = isDate;
   exports.isFunction = isFunction;
   exports.isNull = isNull;
   exports.isNumber = isNumber;
@@ -835,6 +843,7 @@
   exports.transform = transform;
   exports.tyArray = tyArray;
   exports.tyBool = tyBool;
+  exports.tyDate = tyDate;
   exports.tyFunction = tyFunction;
   exports.tyNull = tyNull;
   exports.tyNumber = tyNumber;
@@ -847,6 +856,7 @@
   exports.ɵ0 = ɵ0;
   exports.ɵ1 = ɵ1;
   exports.ɵ2 = ɵ2;
+  exports.ɵ3 = ɵ3;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

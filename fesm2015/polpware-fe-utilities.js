@@ -157,6 +157,7 @@ BasicTypes :=
     boolean
   | number
   | string
+  | date
   | symbol
   | null
   | undefined
@@ -172,6 +173,9 @@ function isNumber(x) {
 }
 function isString(x) {
     return typeof x === 'string';
+}
+function isDate(x) {
+    return Object.prototype.toString.call(x) === '[object Date]';
 }
 function isSymbol(x) {
     return typeof x === 'symbol';
@@ -197,13 +201,15 @@ const tyNull = { name: 'Null', val: null, pred: isNull };
 const tyUndefined = { name: 'Undefined', val: undefined, pred: isUndefined };
 const tyNumber = { name: 'Number', val: 0, pred: isNumber };
 const tyString = { name: 'String', val: '', pred: isString };
+const ɵ0 = function () { return Date.now(); };
+const tyDate = { name: 'Object', val: ɵ0, pred: isDate };
 const tySymbol = { name: 'Symbol', val: null, pred: isSymbol };
-const ɵ0 = function () { return {}; };
-const tyObject = { name: 'Object', val: ɵ0, pred: isObject };
-const ɵ1 = function () { return []; };
-const tyArray = { name: 'Array', val: ɵ1, pred: isArray };
-const ɵ2 = function () { };
-const tyFunction = { name: 'Function', val: ɵ2, pred: isFunction };
+const ɵ1 = function () { return {}; };
+const tyObject = { name: 'Object', val: ɵ1, pred: isObject };
+const ɵ2 = function () { return []; };
+const tyArray = { name: 'Array', val: ɵ2, pred: isArray };
+const ɵ3 = function () { };
+const tyFunction = { name: 'Function', val: ɵ3, pred: isFunction };
 /**
  *  Predefined types and their properties.
  */
@@ -213,6 +219,7 @@ const preDefinedTypes = {
     tyUndefined: tyUndefined,
     tyNumber: tyNumber,
     tyString: tyString,
+    tyDate: tyDate,
     tySymbol: tySymbol,
     tyObject: tyObject,
     tyArray: tyArray,
@@ -789,5 +796,5 @@ function tojQueryDeferred(promise) {
  * Generated bundle index. Do not edit.
  */
 
-export { DummyPromise, applyEscape, assert, convert, convertible, defaultValue, diff, getHashParamByName, getParamByName, getQueryParamByName, getRandomInt, getType, guid, hashCode, hashMember, intersection, isArray, isBoolean, isFunction, isNull, isNumber, isObject, isString, isSymbol, isUndefined, lift, liftIntoReject, liftToPredicate, liftWithGuard, makeArray, ok, pushArray, readerPipeline, replace, reverseEscape, safeParseBool, safeParseFloat, safeParseInt, safeParseString, settle, tojQueryDeferred, transform, tyArray, tyBool, tyFunction, tyNull, tyNumber, tyObject, tyString, tySymbol, tyUndefined, urlEncode, urlEncodePair, ɵ0, ɵ1, ɵ2 };
+export { DummyPromise, applyEscape, assert, convert, convertible, defaultValue, diff, getHashParamByName, getParamByName, getQueryParamByName, getRandomInt, getType, guid, hashCode, hashMember, intersection, isArray, isBoolean, isDate, isFunction, isNull, isNumber, isObject, isString, isSymbol, isUndefined, lift, liftIntoReject, liftToPredicate, liftWithGuard, makeArray, ok, pushArray, readerPipeline, replace, reverseEscape, safeParseBool, safeParseFloat, safeParseInt, safeParseString, settle, tojQueryDeferred, transform, tyArray, tyBool, tyDate, tyFunction, tyNull, tyNumber, tyObject, tyString, tySymbol, tyUndefined, urlEncode, urlEncodePair, ɵ0, ɵ1, ɵ2, ɵ3 };
 //# sourceMappingURL=polpware-fe-utilities.js.map
