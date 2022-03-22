@@ -1,7 +1,7 @@
 {
   "name": "@polpware/fe-utilities",
-  "version": "9.1.0",
-  "description": "A set of utilties on url, array, string, data, promise, and more",
+  "version": "9.2.0",
+  "description": "A set of utilties on url, array, string, date, promise, and more",
   "main": "bundles/polpware-fe-utilities.umd.js",
   "repository": {
     "type": "git",
@@ -16,8 +16,8 @@
     "url": "https://github.com/polpware/polpware-fe-utilities/issues"
   },
   "homepage": "https://github.com/polpware/polpware-fe-utilities#readme",
-  "dependencies": {
-    "tslib": "^1.10.0"
+  "peerDependencies": {
+    "moment": "^2.29.1"
   },
   "module": "fesm5/polpware-fe-utilities.js",
   "es2015": "fesm2015/polpware-fe-utilities.js",
@@ -27,5 +27,8 @@
   "fesm2015": "fesm2015/polpware-fe-utilities.js",
   "typings": "polpware-fe-utilities.d.ts",
   "metadata": "polpware-fe-utilities.metadata.json",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
 }

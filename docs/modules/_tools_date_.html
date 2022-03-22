@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;typing/type-cast&quot; | Polpware typescript utilities (3.0.0)</title>
+	<title>&quot;tools/date&quot; | Polpware typescript utilities (3.0.0)</title>
 	<meta name="description" content="Documentation for Polpware typescript utilities (3.0.0)">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_typing_type_cast_.html">&quot;typing/type-cast&quot;</a>
+					<a href="_tools_date_.html">&quot;tools/date&quot;</a>
 				</li>
 			</ul>
-			<h1>Module &quot;typing/type-cast&quot;</h1>
+			<h1>Module &quot;tools/date&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -69,14 +69,19 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum tsd-parent-kind-module"><a href="../enums/_tools_date_.intervalenum.html" class="tsd-kind-icon">Interval<wbr>Enum</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_typing_type_cast_.html#convert" class="tsd-kind-icon">convert</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_typing_type_cast_.html#convertible" class="tsd-kind-icon">convertible</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_typing_type_cast_.html#safeparsebool" class="tsd-kind-icon">safe<wbr>Parse<wbr>Bool</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_typing_type_cast_.html#safeparsefloat" class="tsd-kind-icon">safe<wbr>Parse<wbr>Float</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_typing_type_cast_.html#safeparseint" class="tsd-kind-icon">safe<wbr>Parse<wbr>Int</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_typing_type_cast_.html#safeparsestring" class="tsd-kind-icon">safe<wbr>Parse<wbr>String</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_tools_date_.html#converttoutc" class="tsd-kind-icon">convert<wbr>ToUtc</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_tools_date_.html#converttoutcstring" class="tsd-kind-icon">convert<wbr>ToUtc<wbr>String</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_tools_date_.html#gettimezoneoffset" class="tsd-kind-icon">get<wbr>Timezone<wbr>Offset</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_tools_date_.html#getutcnow" class="tsd-kind-icon">get<wbr>Utc<wbr>Now</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_tools_date_.html#hasdst" class="tsd-kind-icon">hasDST</a></li>
 							</ul>
 						</section>
 					</div>
@@ -85,171 +90,145 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="convert" class="tsd-anchor"></a>
-					<h3>convert</h3>
+					<a name="converttoutc" class="tsd-anchor"></a>
+					<h3>convert<wbr>ToUtc</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">convert<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, ty<span class="tsd-signature-symbol">: </span><a href="../interfaces/_typing_type_checker_.itypedef.html" class="tsd-signature-type">ITypeDef</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">convert<wbr>ToUtc<span class="tsd-signature-symbol">(</span>dateInLocal<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span>, timeInLocal<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span>, timezone<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/typing/type-cast.ts#L85">typing/type-cast.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/tools/date.ts#L11">tools/date.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Safely converts the given value into a value of the given type.</p>
+									<p>Converts the given date and time into a UTC time.
+										If the given time zone is null or undefined, this
+									method will not use the local time zone.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<h5>dateInLocal: <span class="tsd-signature-type">Date</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Date in local time</p>
+									</div>
 								</li>
 								<li>
-									<h5>ty: <a href="../interfaces/_typing_type_checker_.itypedef.html" class="tsd-signature-type">ITypeDef</a></h5>
+									<h5>timeInLocal: <span class="tsd-signature-type">Date</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Time in local time</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> timezone: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Optional time zone</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Date</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="convertible" class="tsd-anchor"></a>
-					<h3>convertible</h3>
+					<a name="converttoutcstring" class="tsd-anchor"></a>
+					<h3>convert<wbr>ToUtc<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">convertible<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, ty<span class="tsd-signature-symbol">: </span><a href="../interfaces/_typing_type_checker_.itypedef.html" class="tsd-signature-type">ITypeDef</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">convert<wbr>ToUtc<wbr>String<span class="tsd-signature-symbol">(</span>date<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/typing/type-cast.ts#L65">typing/type-cast.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/tools/date.ts#L75">tools/date.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns if a given value can be safely converted into the given type.</p>
+									<p>Converts a local time to Utc string.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>ty: <a href="../interfaces/_typing_type_checker_.itypedef.html" class="tsd-signature-type">ITypeDef</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="safeparsebool" class="tsd-anchor"></a>
-					<h3>safe<wbr>Parse<wbr>Bool</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">safe<wbr>Parse<wbr>Bool<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/typing/type-cast.ts#L46">typing/type-cast.ts:46</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Parses a given value into a bool value.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="safeparsefloat" class="tsd-anchor"></a>
-					<h3>safe<wbr>Parse<wbr>Float</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">safe<wbr>Parse<wbr>Float<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/typing/type-cast.ts#L30">typing/type-cast.ts:30</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Parses a given value into a float number.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="safeparseint" class="tsd-anchor"></a>
-					<h3>safe<wbr>Parse<wbr>Int</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">safe<wbr>Parse<wbr>Int<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/typing/type-cast.ts#L14">typing/type-cast.ts:14</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Parses a given value into an integer.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="safeparsestring" class="tsd-anchor"></a>
-					<h3>safe<wbr>Parse<wbr>String</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">safe<wbr>Parse<wbr>String<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/typing/type-cast.ts#L3">typing/type-cast.ts:3</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
+									<h5>date: <span class="tsd-signature-type">Date</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="gettimezoneoffset" class="tsd-anchor"></a>
+					<h3>get<wbr>Timezone<wbr>Offset</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Timezone<wbr>Offset<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/tools/date.ts#L39">tools/date.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the timezone offset between the local time and UTC.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getutcnow" class="tsd-anchor"></a>
+					<h3>get<wbr>Utc<wbr>Now</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Utc<wbr>Now<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/tools/date.ts#L59">tools/date.ts:59</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the UTC time this moment.
+									This method uses the current time zone.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Date</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="hasdst" class="tsd-anchor"></a>
+					<h3>hasDST</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">hasDST<span class="tsd-signature-symbol">(</span>date<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/polpware/polpware-fe-utilities/blob/fa9d98b/src/lib/src/tools/date.ts#L65">tools/date.ts:65</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> date: <span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> = new Date()</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -276,7 +255,7 @@
 					<li class=" tsd-kind-module">
 						<a href="_tools_arr_.html">&quot;tools/arr&quot;</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="_tools_date_.html">&quot;tools/date&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -306,7 +285,7 @@
 					<li class=" tsd-kind-module">
 						<a href="_tools_url_spec_.html">&quot;tools/url.spec&quot;</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="_typing_type_cast_.html">&quot;typing/type-<wbr>cast&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -319,23 +298,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_typing_type_cast_.html#convert" class="tsd-kind-icon">convert</a>
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/_tools_date_.intervalenum.html" class="tsd-kind-icon">Interval<wbr>Enum</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_typing_type_cast_.html#convertible" class="tsd-kind-icon">convertible</a>
+						<a href="_tools_date_.html#converttoutc" class="tsd-kind-icon">convert<wbr>ToUtc</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_typing_type_cast_.html#safeparsebool" class="tsd-kind-icon">safe<wbr>Parse<wbr>Bool</a>
+						<a href="_tools_date_.html#converttoutcstring" class="tsd-kind-icon">convert<wbr>ToUtc<wbr>String</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_typing_type_cast_.html#safeparsefloat" class="tsd-kind-icon">safe<wbr>Parse<wbr>Float</a>
+						<a href="_tools_date_.html#gettimezoneoffset" class="tsd-kind-icon">get<wbr>Timezone<wbr>Offset</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_typing_type_cast_.html#safeparseint" class="tsd-kind-icon">safe<wbr>Parse<wbr>Int</a>
+						<a href="_tools_date_.html#getutcnow" class="tsd-kind-icon">get<wbr>Utc<wbr>Now</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_typing_type_cast_.html#safeparsestring" class="tsd-kind-icon">safe<wbr>Parse<wbr>String</a>
+						<a href="_tools_date_.html#hasdst" class="tsd-kind-icon">hasDST</a>
 					</li>
 				</ul>
 			</nav>

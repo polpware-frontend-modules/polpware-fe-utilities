@@ -1,7 +1,6 @@
 export declare function isBoolean(x: any): x is boolean;
 export declare function isNumber(x: any): x is number;
 export declare function isString(x: any): x is string;
-export declare function isDate(x: any): x is Object;
 export declare function isSymbol(x: any): x is symbol;
 export declare function isNull(x: any): x is null;
 export declare function isUndefined(x: any): x is undefined;
@@ -18,7 +17,6 @@ export declare const tyNull: ITypeDef;
 export declare const tyUndefined: ITypeDef;
 export declare const tyNumber: ITypeDef;
 export declare const tyString: ITypeDef;
-export declare const tyDate: ITypeDef;
 export declare const tySymbol: ITypeDef;
 export declare const tyObject: ITypeDef;
 export declare const tyArray: ITypeDef;
