@@ -4,6 +4,7 @@ export * from './src/lib/src/tools/arr';
 export * from './src/lib/src/tools/str';
 export * from './src/lib/src/tools/set';
 export * from './src/lib/src/tools/hash';
+export * from './src/lib/src/tools/date';
 export * from './src/lib/src/typing/type-cast';
 export * from './src/lib/src/typing/type-checker';
 export * from './src/lib/src/promise/monadic-operations';
