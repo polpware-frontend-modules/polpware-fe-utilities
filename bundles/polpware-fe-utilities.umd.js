@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define('@polpware/fe-utilities', ['exports'], factory) :
-  (global = global || self, factory((global.polpware = global.polpware || {}, global.polpware['fe-utilities'] = {})));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('moment')) :
+  typeof define === 'function' && define.amd ? define('@polpware/fe-utilities', ['exports', 'moment'], factory) :
+  (global = global || self, factory((global.polpware = global.polpware || {}, global.polpware['fe-utilities'] = {}), global.moment));
+}(this, (function (exports, moment) { 'use strict';
 
   /**
    * Generates a guid.
@@ -329,6 +329,68 @@
           return code;
       }
       return hashPrimitiveMember(name, value, configuration);
+  }
+
+  /**
+   * Converts the given date and time into a UTC time.
+   * If the given time zone is null or undefined, this
+   * method will not use the local time zone.
+   * @param dateInLocal Date in local time
+   * @param timeInLocal Time in local time
+   * @param timezone Optional time zone
+   */
+  function convertToUtc(dateInLocal, timeInLocal, timezone) {
+      // Construct a new time 
+      var workTime = new Date(dateInLocal.getFullYear(), dateInLocal.getMonth(), dateInLocal.getDay(), timeInLocal.getHours(), timeInLocal.getMinutes());
+      var timeWrapper = moment(workTime);
+      // The above time should be interpreted in the given timezone
+      if (timezone) {
+          // Utc time
+          timeWrapper.subtract(timezone, 'hours');
+      }
+      // Convert to UTC time
+      var timeInUtc = new Date(Date.UTC(timeWrapper.year(), timeWrapper.month(), timeWrapper.day(), timeWrapper.hour(), timeWrapper.minute(), timeWrapper.second()));
+      return timeInUtc;
+  }
+  /**
+   Get the timezone offset between the local time and UTC.
+   */
+  function getTimezoneOffset() {
+      var d = new Date();
+      var n = d.getTimezoneOffset();
+      return -Math.floor(n / 60);
+  }
+  /**
+   * A set of commonly used interval.
+   */
+
+  (function (IntervalEnum) {
+      IntervalEnum[IntervalEnum["Day"] = 10] = "Day";
+      IntervalEnum[IntervalEnum["Week"] = 50] = "Week";
+      IntervalEnum[IntervalEnum["Month"] = 100] = "Month";
+      IntervalEnum[IntervalEnum["Year"] = 500] = "Year";
+  })(exports.IntervalEnum || (exports.IntervalEnum = {}));
+  /**
+   * Returns the UTC time this moment.
+   * This method uses the current time zone.
+   */
+  function getUtcNow() {
+      var now = new Date();
+      var offset = getTimezoneOffset();
+      return convertToUtc(now, now, offset);
+  }
+  function hasDST(date) {
+      if (date === void 0) { date = new Date(); }
+      var january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+      var july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+      return Math.max(january, july) !== date.getTimezoneOffset();
+  }
+  /**
+   * Converts a local time to Utc string.
+   * @param date
+   */
+  function convertToUtcString(date) {
+      return date.toISOString();
   }
 
   function safeParseString(value) {
@@ -802,6 +864,8 @@
   exports.applyEscape = applyEscape;
   exports.assert = assert;
   exports.convert = convert;
+  exports.convertToUtc = convertToUtc;
+  exports.convertToUtcString = convertToUtcString;
   exports.convertible = convertible;
   exports.defaultValue = defaultValue;
   exports.diff = diff;
@@ -809,8 +873,11 @@
   exports.getParamByName = getParamByName;
   exports.getQueryParamByName = getQueryParamByName;
   exports.getRandomInt = getRandomInt;
+  exports.getTimezoneOffset = getTimezoneOffset;
   exports.getType = getType;
+  exports.getUtcNow = getUtcNow;
   exports.guid = guid;
+  exports.hasDST = hasDST;
   exports.hashCode = hashCode;
   exports.hashMember = hashMember;
   exports.intersection = intersection;

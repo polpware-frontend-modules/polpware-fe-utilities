@@ -1,0 +1,63 @@
+import * as moment from 'moment';
+/**
+ * Converts the given date and time into a UTC time.
+ * If the given time zone is null or undefined, this
+ * method will not use the local time zone.
+ * @param dateInLocal Date in local time
+ * @param timeInLocal Time in local time
+ * @param timezone Optional time zone
+ */
+export function convertToUtc(dateInLocal, timeInLocal, timezone) {
+    // Construct a new time 
+    var workTime = new Date(dateInLocal.getFullYear(), dateInLocal.getMonth(), dateInLocal.getDay(), timeInLocal.getHours(), timeInLocal.getMinutes());
+    var timeWrapper = moment(workTime);
+    // The above time should be interpreted in the given timezone
+    if (timezone) {
+        // Utc time
+        timeWrapper.subtract(timezone, 'hours');
+    }
+    // Convert to UTC time
+    var timeInUtc = new Date(Date.UTC(timeWrapper.year(), timeWrapper.month(), timeWrapper.day(), timeWrapper.hour(), timeWrapper.minute(), timeWrapper.second()));
+    return timeInUtc;
+}
+/**
+ Get the timezone offset between the local time and UTC.
+ */
+export function getTimezoneOffset() {
+    var d = new Date();
+    var n = d.getTimezoneOffset();
+    return -Math.floor(n / 60);
+}
+/**
+ * A set of commonly used interval.
+ */
+export var IntervalEnum;
+(function (IntervalEnum) {
+    IntervalEnum[IntervalEnum["Day"] = 10] = "Day";
+    IntervalEnum[IntervalEnum["Week"] = 50] = "Week";
+    IntervalEnum[IntervalEnum["Month"] = 100] = "Month";
+    IntervalEnum[IntervalEnum["Year"] = 500] = "Year";
+})(IntervalEnum || (IntervalEnum = {}));
+/**
+ * Returns the UTC time this moment.
+ * This method uses the current time zone.
+ */
+export function getUtcNow() {
+    var now = new Date();
+    var offset = getTimezoneOffset();
+    return convertToUtc(now, now, offset);
+}
+export function hasDST(date) {
+    if (date === void 0) { date = new Date(); }
+    var january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+    var july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+    return Math.max(january, july) !== date.getTimezoneOffset();
+}
+/**
+ * Converts a local time to Utc string.
+ * @param date
+ */
+export function convertToUtcString(date) {
+    return date.toISOString();
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGF0ZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0Bwb2xwd2FyZS9mZS11dGlsaXRpZXMvIiwic291cmNlcyI6WyJzcmMvbGliL3NyYy90b29scy9kYXRlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sS0FBSyxNQUFNLE1BQU0sUUFBUSxDQUFDO0FBRWpDOzs7Ozs7O0dBT0c7QUFDSCxNQUFNLFVBQVUsWUFBWSxDQUFDLFdBQWlCLEVBQUUsV0FBaUIsRUFBRSxRQUFpQjtJQUNoRix3QkFBd0I7SUFDeEIsSUFBTSxRQUFRLEdBQUcsSUFBSSxJQUFJLENBQUMsV0FBVyxDQUFDLFdBQVcsRUFBRSxFQUMvQyxXQUFXLENBQUMsUUFBUSxFQUFFLEVBQ3RCLFdBQVcsQ0FBQyxNQUFNLEVBQUUsRUFDcEIsV0FBVyxDQUFDLFFBQVEsRUFBRSxFQUN0QixXQUFXLENBQUMsVUFBVSxFQUFFLENBQUMsQ0FBQztJQUM5QixJQUFNLFdBQVcsR0FBRyxNQUFNLENBQUMsUUFBUSxDQUFDLENBQUM7SUFDckMsNkRBQTZEO0lBQzdELElBQUksUUFBUSxFQUFFO1FBQ1YsV0FBVztRQUNYLFdBQVcsQ0FBQyxRQUFRLENBQUMsUUFBUSxFQUFFLE9BQU8sQ0FBQyxDQUFDO0tBQzNDO0lBRUQsc0JBQXNCO0lBQ3RCLElBQUksU0FBUyxHQUFHLElBQUksSUFBSSxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsV0FBVyxDQUFDLElBQUksRUFBRSxFQUNoRCxXQUFXLENBQUMsS0FBSyxFQUFFLEVBQ25CLFdBQVcsQ0FBQyxHQUFHLEVBQUUsRUFDakIsV0FBVyxDQUFDLElBQUksRUFBRSxFQUNsQixXQUFXLENBQUMsTUFBTSxFQUFFLEVBQ3BCLFdBQVcsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxDQUFDLENBQUM7SUFFM0IsT0FBTyxTQUFTLENBQUM7QUFDckIsQ0FBQztBQUVEOztHQUVHO0FBQ0gsTUFBTSxVQUFVLGlCQUFpQjtJQUM3QixJQUFNLENBQUMsR0FBRyxJQUFJLElBQUksRUFBRSxDQUFDO0lBQ3JCLElBQU0sQ0FBQyxHQUFHLENBQUMsQ0FBQyxpQkFBaUIsRUFBRSxDQUFDO0lBQ2hDLE9BQU8sQ0FBRSxJQUFJLENBQUMsS0FBSyxDQUFDLENBQUMsR0FBRyxFQUFFLENBQUMsQ0FBQztBQUNoQyxDQUFDO0FBRUQ7O0dBRUc7QUFDSCxNQUFNLENBQU4sSUFBWSxZQUtYO0FBTEQsV0FBWSxZQUFZO0lBQ3BCLDhDQUFRLENBQUE7SUFDUixnREFBUyxDQUFBO0lBQ1QsbURBQVcsQ0FBQTtJQUNYLGlEQUFVLENBQUE7QUFDZCxDQUFDLEVBTFcsWUFBWSxLQUFaLFlBQVksUUFLdkI7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsU0FBUztJQUNyQixJQUFNLEdBQUcsR0FBRyxJQUFJLElBQUksRUFBRSxDQUFDO0lBQ3ZCLElBQU0sTUFBTSxHQUFHLGlCQUFpQixFQUFFLENBQUM7SUFDbkMsT0FBTyxZQUFZLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxNQUFNLENBQUMsQ0FBQztBQUMxQyxDQUFDO0FBRUQsTUFBTSxVQUFVLE1BQU0sQ0FBQyxJQUFpQjtJQUFqQixxQkFBQSxFQUFBLFdBQVcsSUFBSSxFQUFFO0lBQ3BDLElBQU0sT0FBTyxHQUFHLElBQUksSUFBSSxDQUFDLElBQUksQ0FBQyxXQUFXLEVBQUUsRUFBRSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUMsaUJBQWlCLEVBQUUsQ0FBQztJQUN2RSxJQUFNLElBQUksR0FBRyxJQUFJLElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxFQUFFLEVBQUUsQ0FBQyxFQUFFLENBQUMsQ0FBQyxDQUFDLGlCQUFpQixFQUFFLENBQUM7SUFDcEUsT0FBTyxJQUFJLENBQUMsR0FBRyxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsS0FBSyxJQUFJLENBQUMsaUJBQWlCLEVBQUUsQ0FBQztBQUNoRSxDQUFDO0FBRUQ7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLGtCQUFrQixDQUFDLElBQVU7SUFDekMsT0FBTyxJQUFJLENBQUMsV0FBVyxFQUFFLENBQUM7QUFDOUIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCAqIGFzIG1vbWVudCBmcm9tICdtb21lbnQnO1xuXG4vKipcbiAqIENvbnZlcnRzIHRoZSBnaXZlbiBkYXRlIGFuZCB0aW1lIGludG8gYSBVVEMgdGltZS4gXG4gKiBJZiB0aGUgZ2l2ZW4gdGltZSB6b25lIGlzIG51bGwgb3IgdW5kZWZpbmVkLCB0aGlzIFxuICogbWV0aG9kIHdpbGwgbm90IHVzZSB0aGUgbG9jYWwgdGltZSB6b25lLlxuICogQHBhcmFtIGRhdGVJbkxvY2FsIERhdGUgaW4gbG9jYWwgdGltZVxuICogQHBhcmFtIHRpbWVJbkxvY2FsIFRpbWUgaW4gbG9jYWwgdGltZVxuICogQHBhcmFtIHRpbWV6b25lIE9wdGlvbmFsIHRpbWUgem9uZVxuICovXG5leHBvcnQgZnVuY3Rpb24gY29udmVydFRvVXRjKGRhdGVJbkxvY2FsOiBEYXRlLCB0aW1lSW5Mb2NhbDogRGF0ZSwgdGltZXpvbmU/OiBudW1iZXIpIHtcbiAgICAvLyBDb25zdHJ1Y3QgYSBuZXcgdGltZSBcbiAgICBjb25zdCB3b3JrVGltZSA9IG5ldyBEYXRlKGRhdGVJbkxvY2FsLmdldEZ1bGxZZWFyKCksXG4gICAgICAgIGRhdGVJbkxvY2FsLmdldE1vbnRoKCksXG4gICAgICAgIGRhdGVJbkxvY2FsLmdldERheSgpLFxuICAgICAgICB0aW1lSW5Mb2NhbC5nZXRIb3VycygpLFxuICAgICAgICB0aW1lSW5Mb2NhbC5nZXRNaW51dGVzKCkpO1xuICAgIGNvbnN0IHRpbWVXcmFwcGVyID0gbW9tZW50KHdvcmtUaW1lKTtcbiAgICAvLyBUaGUgYWJvdmUgdGltZSBzaG91bGQgYmUgaW50ZXJwcmV0ZWQgaW4gdGhlIGdpdmVuIHRpbWV6b25lXG4gICAgaWYgKHRpbWV6b25lKSB7XG4gICAgICAgIC8vIFV0YyB0aW1lXG4gICAgICAgIHRpbWVXcmFwcGVyLnN1YnRyYWN0KHRpbWV6b25lLCAnaG91cnMnKTtcbiAgICB9XG5cbiAgICAvLyBDb252ZXJ0IHRvIFVUQyB0aW1lXG4gICAgbGV0IHRpbWVJblV0YyA9IG5ldyBEYXRlKERhdGUuVVRDKHRpbWVXcmFwcGVyLnllYXIoKSxcbiAgICAgICAgdGltZVdyYXBwZXIubW9udGgoKSxcbiAgICAgICAgdGltZVdyYXBwZXIuZGF5KCksXG4gICAgICAgIHRpbWVXcmFwcGVyLmhvdXIoKSxcbiAgICAgICAgdGltZVdyYXBwZXIubWludXRlKCksXG4gICAgICAgIHRpbWVXcmFwcGVyLnNlY29uZCgpKSk7XG5cbiAgICByZXR1cm4gdGltZUluVXRjO1xufVxuXG4vKipcbiBHZXQgdGhlIHRpbWV6b25lIG9mZnNldCBiZXR3ZWVuIHRoZSBsb2NhbCB0aW1lIGFuZCBVVEMuXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBnZXRUaW1lem9uZU9mZnNldCgpIHtcbiAgICBjb25zdCBkID0gbmV3IERhdGUoKTtcbiAgICBjb25zdCBuID0gZC5nZXRUaW1lem9uZU9mZnNldCgpO1xuICAgIHJldHVybiAtIE1hdGguZmxvb3IobiAvIDYwKTtcbn1cblxuLyoqXG4gKiBBIHNldCBvZiBjb21tb25seSB1c2VkIGludGVydmFsLlxuICovXG5leHBvcnQgZW51bSBJbnRlcnZhbEVudW0ge1xuICAgIERheSA9IDEwLFxuICAgIFdlZWsgPSA1MCxcbiAgICBNb250aCA9IDEwMCxcbiAgICBZZWFyID0gNTAwXG59XG5cbi8qKlxuICogUmV0dXJucyB0aGUgVVRDIHRpbWUgdGhpcyBtb21lbnQuXG4gKiBUaGlzIG1ldGhvZCB1c2VzIHRoZSBjdXJyZW50IHRpbWUgem9uZS5cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGdldFV0Y05vdygpOiBEYXRlIHtcbiAgICBjb25zdCBub3cgPSBuZXcgRGF0ZSgpO1xuICAgIGNvbnN0IG9mZnNldCA9IGdldFRpbWV6b25lT2Zmc2V0KCk7XG4gICAgcmV0dXJuIGNvbnZlcnRUb1V0Yyhub3csIG5vdywgb2Zmc2V0KTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIGhhc0RTVChkYXRlID0gbmV3IERhdGUoKSkge1xuICAgIGNvbnN0IGphbnVhcnkgPSBuZXcgRGF0ZShkYXRlLmdldEZ1bGxZZWFyKCksIDAsIDEpLmdldFRpbWV6b25lT2Zmc2V0KCk7XG4gICAgY29uc3QganVseSA9IG5ldyBEYXRlKGRhdGUuZ2V0RnVsbFllYXIoKSwgNiwgMSkuZ2V0VGltZXpvbmVPZmZzZXQoKTtcbiAgICByZXR1cm4gTWF0aC5tYXgoamFudWFyeSwganVseSkgIT09IGRhdGUuZ2V0VGltZXpvbmVPZmZzZXQoKTtcbn1cblxuLyoqXG4gKiBDb252ZXJ0cyBhIGxvY2FsIHRpbWUgdG8gVXRjIHN0cmluZy5cbiAqIEBwYXJhbSBkYXRlXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBjb252ZXJ0VG9VdGNTdHJpbmcoZGF0ZTogRGF0ZSkge1xuICAgIHJldHVybiBkYXRlLnRvSVNPU3RyaW5nKCk7XG59XG4iXX0=

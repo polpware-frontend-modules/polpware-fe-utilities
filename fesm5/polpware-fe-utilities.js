@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 /**
  * Generates a guid.
  */
@@ -323,6 +325,68 @@ function hashMember(name, value, configuration) {
         return code;
     }
     return hashPrimitiveMember(name, value, configuration);
+}
+
+/**
+ * Converts the given date and time into a UTC time.
+ * If the given time zone is null or undefined, this
+ * method will not use the local time zone.
+ * @param dateInLocal Date in local time
+ * @param timeInLocal Time in local time
+ * @param timezone Optional time zone
+ */
+function convertToUtc(dateInLocal, timeInLocal, timezone) {
+    // Construct a new time 
+    var workTime = new Date(dateInLocal.getFullYear(), dateInLocal.getMonth(), dateInLocal.getDay(), timeInLocal.getHours(), timeInLocal.getMinutes());
+    var timeWrapper = moment(workTime);
+    // The above time should be interpreted in the given timezone
+    if (timezone) {
+        // Utc time
+        timeWrapper.subtract(timezone, 'hours');
+    }
+    // Convert to UTC time
+    var timeInUtc = new Date(Date.UTC(timeWrapper.year(), timeWrapper.month(), timeWrapper.day(), timeWrapper.hour(), timeWrapper.minute(), timeWrapper.second()));
+    return timeInUtc;
+}
+/**
+ Get the timezone offset between the local time and UTC.
+ */
+function getTimezoneOffset() {
+    var d = new Date();
+    var n = d.getTimezoneOffset();
+    return -Math.floor(n / 60);
+}
+/**
+ * A set of commonly used interval.
+ */
+var IntervalEnum;
+(function (IntervalEnum) {
+    IntervalEnum[IntervalEnum["Day"] = 10] = "Day";
+    IntervalEnum[IntervalEnum["Week"] = 50] = "Week";
+    IntervalEnum[IntervalEnum["Month"] = 100] = "Month";
+    IntervalEnum[IntervalEnum["Year"] = 500] = "Year";
+})(IntervalEnum || (IntervalEnum = {}));
+/**
+ * Returns the UTC time this moment.
+ * This method uses the current time zone.
+ */
+function getUtcNow() {
+    var now = new Date();
+    var offset = getTimezoneOffset();
+    return convertToUtc(now, now, offset);
+}
+function hasDST(date) {
+    if (date === void 0) { date = new Date(); }
+    var january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+    var july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+    return Math.max(january, july) !== date.getTimezoneOffset();
+}
+/**
+ * Converts a local time to Utc string.
+ * @param date
+ */
+function convertToUtcString(date) {
+    return date.toISOString();
 }
 
 function safeParseString(value) {
@@ -796,5 +860,5 @@ function tojQueryDeferred(promise) {
  * Generated bundle index. Do not edit.
  */
 
-export { DummyPromise, applyEscape, assert, convert, convertible, defaultValue, diff, getHashParamByName, getParamByName, getQueryParamByName, getRandomInt, getType, guid, hashCode, hashMember, intersection, isArray, isBoolean, isDate, isFunction, isNull, isNumber, isObject, isString, isSymbol, isUndefined, lift, liftIntoReject, liftToPredicate, liftWithGuard, makeArray, ok, pushArray, readerPipeline, replace, reverseEscape, safeParseBool, safeParseFloat, safeParseInt, safeParseString, settle, tojQueryDeferred, transform, tyArray, tyBool, tyDate, tyFunction, tyNull, tyNumber, tyObject, tyString, tySymbol, tyUndefined, urlEncode, urlEncodePair, ɵ0, ɵ1, ɵ2, ɵ3 };
+export { DummyPromise, IntervalEnum, applyEscape, assert, convert, convertToUtc, convertToUtcString, convertible, defaultValue, diff, getHashParamByName, getParamByName, getQueryParamByName, getRandomInt, getTimezoneOffset, getType, getUtcNow, guid, hasDST, hashCode, hashMember, intersection, isArray, isBoolean, isDate, isFunction, isNull, isNumber, isObject, isString, isSymbol, isUndefined, lift, liftIntoReject, liftToPredicate, liftWithGuard, makeArray, ok, pushArray, readerPipeline, replace, reverseEscape, safeParseBool, safeParseFloat, safeParseInt, safeParseString, settle, tojQueryDeferred, transform, tyArray, tyBool, tyDate, tyFunction, tyNull, tyNumber, tyObject, tyString, tySymbol, tyUndefined, urlEncode, urlEncodePair, ɵ0, ɵ1, ɵ2, ɵ3 };
 //# sourceMappingURL=polpware-fe-utilities.js.map
