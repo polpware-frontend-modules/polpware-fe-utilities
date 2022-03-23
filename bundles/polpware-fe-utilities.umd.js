@@ -341,7 +341,7 @@
    */
   function convertToUtc(dateInLocal, timeInLocal, timezone) {
       // Construct a new time 
-      var workTime = new Date(dateInLocal.getFullYear(), dateInLocal.getMonth(), dateInLocal.getDay(), timeInLocal.getHours(), timeInLocal.getMinutes());
+      var workTime = new Date(dateInLocal.getFullYear(), dateInLocal.getMonth(), dateInLocal.getDate(), timeInLocal.getHours(), timeInLocal.getMinutes());
       var timeWrapper = moment(workTime);
       // The above time should be interpreted in the given timezone
       if (timezone) {
