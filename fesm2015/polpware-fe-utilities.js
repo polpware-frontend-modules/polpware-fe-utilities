@@ -365,6 +365,7 @@ var IntervalEnum;
     IntervalEnum[IntervalEnum["Week"] = 50] = "Week";
     IntervalEnum[IntervalEnum["Month"] = 100] = "Month";
     IntervalEnum[IntervalEnum["Year"] = 500] = "Year";
+    IntervalEnum[IntervalEnum["Custom"] = 1000] = "Custom";
 })(IntervalEnum || (IntervalEnum = {}));
 /**
  * Returns the UTC time this moment.
@@ -386,6 +387,67 @@ function hasDST(date = new Date()) {
  */
 function convertToUtcString(date) {
     return date.toISOString();
+}
+var MonthEnum;
+(function (MonthEnum) {
+    MonthEnum[MonthEnum["January"] = 1] = "January";
+    MonthEnum[MonthEnum["February"] = 2] = "February";
+    MonthEnum[MonthEnum["March"] = 3] = "March";
+    MonthEnum[MonthEnum["April"] = 4] = "April";
+    MonthEnum[MonthEnum["May"] = 5] = "May";
+    MonthEnum[MonthEnum["June"] = 6] = "June";
+    MonthEnum[MonthEnum["July"] = 7] = "July";
+    MonthEnum[MonthEnum["August"] = 8] = "August";
+    MonthEnum[MonthEnum["September"] = 9] = "September";
+    MonthEnum[MonthEnum["October"] = 10] = "October";
+    MonthEnum[MonthEnum["November"] = 11] = "November";
+    MonthEnum[MonthEnum["December"] = 12] = "December";
+})(MonthEnum || (MonthEnum = {}));
+function getMonthsOfYear() {
+    const ret = [];
+    for (var enumMember in MonthEnum) {
+        var isValueProperty = parseInt(enumMember, 10) >= 0;
+        if (isValueProperty) {
+            ret.push({
+                value: enumMember,
+                text: 'polpCronJob.' + MonthEnum[enumMember]
+            });
+        }
+    }
+    return ret;
+}
+var DayOfWeekEnum;
+(function (DayOfWeekEnum) {
+    DayOfWeekEnum[DayOfWeekEnum["Sunday"] = 0] = "Sunday";
+    DayOfWeekEnum[DayOfWeekEnum["Monday"] = 1] = "Monday";
+    DayOfWeekEnum[DayOfWeekEnum["Tuesday"] = 2] = "Tuesday";
+    DayOfWeekEnum[DayOfWeekEnum["Wednesday"] = 3] = "Wednesday";
+    DayOfWeekEnum[DayOfWeekEnum["Thursday"] = 4] = "Thursday";
+    DayOfWeekEnum[DayOfWeekEnum["Friday"] = 5] = "Friday";
+    DayOfWeekEnum[DayOfWeekEnum["Saturday"] = 6] = "Saturday";
+})(DayOfWeekEnum || (DayOfWeekEnum = {}));
+function getDaysOfWeek() {
+    const ret = [];
+    for (var enumMember in DayOfWeekEnum) {
+        var isValueProperty = parseInt(enumMember, 10) >= 0;
+        if (isValueProperty) {
+            ret.push({
+                value: enumMember,
+                text: 'polpCronJob.' + DayOfWeekEnum[enumMember]
+            });
+        }
+    }
+    return ret;
+}
+function getDaysOfMonth() {
+    const ret = [];
+    for (let i = 1; i < 32; i++) {
+        ret.push({
+            value: i,
+            text: i.toString()
+        });
+    }
+    return ret;
 }
 
 function safeParseString(value) {
@@ -859,5 +921,5 @@ function tojQueryDeferred(promise) {
  * Generated bundle index. Do not edit.
  */
 
-export { DummyPromise, IntervalEnum, applyEscape, assert, convert, convertToUtc, convertToUtcString, convertible, defaultValue, diff, getHashParamByName, getParamByName, getQueryParamByName, getRandomInt, getTimezoneOffset, getType, getUtcNow, guid, hasDST, hashCode, hashMember, intersection, isArray, isBoolean, isDate, isFunction, isNull, isNumber, isObject, isString, isSymbol, isUndefined, lift, liftIntoReject, liftToPredicate, liftWithGuard, makeArray, ok, pushArray, readerPipeline, replace, reverseEscape, safeParseBool, safeParseFloat, safeParseInt, safeParseString, settle, tojQueryDeferred, transform, tyArray, tyBool, tyDate, tyFunction, tyNull, tyNumber, tyObject, tyString, tySymbol, tyUndefined, urlEncode, urlEncodePair, ɵ0, ɵ1, ɵ2, ɵ3 };
+export { DayOfWeekEnum, DummyPromise, IntervalEnum, MonthEnum, applyEscape, assert, convert, convertToUtc, convertToUtcString, convertible, defaultValue, diff, getDaysOfMonth, getDaysOfWeek, getHashParamByName, getMonthsOfYear, getParamByName, getQueryParamByName, getRandomInt, getTimezoneOffset, getType, getUtcNow, guid, hasDST, hashCode, hashMember, intersection, isArray, isBoolean, isDate, isFunction, isNull, isNumber, isObject, isString, isSymbol, isUndefined, lift, liftIntoReject, liftToPredicate, liftWithGuard, makeArray, ok, pushArray, readerPipeline, replace, reverseEscape, safeParseBool, safeParseFloat, safeParseInt, safeParseString, settle, tojQueryDeferred, transform, tyArray, tyBool, tyDate, tyFunction, tyNull, tyNumber, tyObject, tyString, tySymbol, tyUndefined, urlEncode, urlEncodePair, ɵ0, ɵ1, ɵ2, ɵ3 };
 //# sourceMappingURL=polpware-fe-utilities.js.map

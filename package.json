@@ -1,6 +1,6 @@
 {
   "name": "@polpware/fe-utilities",
-  "version": "9.3.0",
+  "version": "9.4.0",
   "description": "A set of utilties on url, array, string, date, promise, and more",
   "main": "bundles/polpware-fe-utilities.umd.js",
   "repository": {

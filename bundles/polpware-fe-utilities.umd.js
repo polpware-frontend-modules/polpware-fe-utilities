@@ -369,6 +369,7 @@
       IntervalEnum[IntervalEnum["Week"] = 50] = "Week";
       IntervalEnum[IntervalEnum["Month"] = 100] = "Month";
       IntervalEnum[IntervalEnum["Year"] = 500] = "Year";
+      IntervalEnum[IntervalEnum["Custom"] = 1000] = "Custom";
   })(exports.IntervalEnum || (exports.IntervalEnum = {}));
   /**
    * Returns the UTC time this moment.
@@ -391,6 +392,67 @@
    */
   function convertToUtcString(date) {
       return date.toISOString();
+  }
+
+  (function (MonthEnum) {
+      MonthEnum[MonthEnum["January"] = 1] = "January";
+      MonthEnum[MonthEnum["February"] = 2] = "February";
+      MonthEnum[MonthEnum["March"] = 3] = "March";
+      MonthEnum[MonthEnum["April"] = 4] = "April";
+      MonthEnum[MonthEnum["May"] = 5] = "May";
+      MonthEnum[MonthEnum["June"] = 6] = "June";
+      MonthEnum[MonthEnum["July"] = 7] = "July";
+      MonthEnum[MonthEnum["August"] = 8] = "August";
+      MonthEnum[MonthEnum["September"] = 9] = "September";
+      MonthEnum[MonthEnum["October"] = 10] = "October";
+      MonthEnum[MonthEnum["November"] = 11] = "November";
+      MonthEnum[MonthEnum["December"] = 12] = "December";
+  })(exports.MonthEnum || (exports.MonthEnum = {}));
+  function getMonthsOfYear() {
+      var ret = [];
+      for (var enumMember in exports.MonthEnum) {
+          var isValueProperty = parseInt(enumMember, 10) >= 0;
+          if (isValueProperty) {
+              ret.push({
+                  value: enumMember,
+                  text: 'polpCronJob.' + exports.MonthEnum[enumMember]
+              });
+          }
+      }
+      return ret;
+  }
+
+  (function (DayOfWeekEnum) {
+      DayOfWeekEnum[DayOfWeekEnum["Sunday"] = 0] = "Sunday";
+      DayOfWeekEnum[DayOfWeekEnum["Monday"] = 1] = "Monday";
+      DayOfWeekEnum[DayOfWeekEnum["Tuesday"] = 2] = "Tuesday";
+      DayOfWeekEnum[DayOfWeekEnum["Wednesday"] = 3] = "Wednesday";
+      DayOfWeekEnum[DayOfWeekEnum["Thursday"] = 4] = "Thursday";
+      DayOfWeekEnum[DayOfWeekEnum["Friday"] = 5] = "Friday";
+      DayOfWeekEnum[DayOfWeekEnum["Saturday"] = 6] = "Saturday";
+  })(exports.DayOfWeekEnum || (exports.DayOfWeekEnum = {}));
+  function getDaysOfWeek() {
+      var ret = [];
+      for (var enumMember in exports.DayOfWeekEnum) {
+          var isValueProperty = parseInt(enumMember, 10) >= 0;
+          if (isValueProperty) {
+              ret.push({
+                  value: enumMember,
+                  text: 'polpCronJob.' + exports.DayOfWeekEnum[enumMember]
+              });
+          }
+      }
+      return ret;
+  }
+  function getDaysOfMonth() {
+      var ret = [];
+      for (var i = 1; i < 32; i++) {
+          ret.push({
+              value: i,
+              text: i.toString()
+          });
+      }
+      return ret;
   }
 
   function safeParseString(value) {
@@ -869,7 +931,10 @@
   exports.convertible = convertible;
   exports.defaultValue = defaultValue;
   exports.diff = diff;
+  exports.getDaysOfMonth = getDaysOfMonth;
+  exports.getDaysOfWeek = getDaysOfWeek;
   exports.getHashParamByName = getHashParamByName;
+  exports.getMonthsOfYear = getMonthsOfYear;
   exports.getParamByName = getParamByName;
   exports.getQueryParamByName = getQueryParamByName;
   exports.getRandomInt = getRandomInt;
