@@ -1,26 +1,24 @@
-# polpware-fe-utilities
-A set of javascirpt/typescript utilties
+# FeUtilities
 
-## Dependencies
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
 
-This project does not depend on any third libraries. 
+## Code scaffolding
 
-## Install 
+Run `ng generate component component-name --project fe-utilities` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project fe-utilities`.
+> Note: Don't forget to add `--project fe-utilities` or else it will be added to the default project in your `angular.json` file. 
 
-To use it, clone this repo and install it as follows 
+## Build
 
-> yarn add https://github.com/polpware/polpware-fe-utilities.git
+Run `ng build fe-utilities` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Development and Test
+## Publishing
 
-Create your modules in the **src** directory, and run the following command for test
+After building your library with `ng build fe-utilities`, go to the dist folder `cd dist/fe-utilities` and run `npm publish`.
 
-> npm test
+## Running unit tests
 
-To generate documentation, run 
+Run `ng test fe-utilities` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-> gulp doc
+## Further help
 
-## Documentation
-
-[Visit documents](https://polpware.github.io/polpware-fe-utilities)
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

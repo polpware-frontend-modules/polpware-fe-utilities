@@ -1,25 +1,14 @@
 {
   "name": "@polpware/fe-utilities",
-  "version": "9.4.1",
-  "description": "A set of utilties on url, array, string, date, promise, and more",
-  "main": "index.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/polpware/polpware-fe-utilities.git"
-  },
-  "keywords": [
-    "utilities"
-  ],
-  "author": "Tom Tang",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/polpware/polpware-fe-utilities/issues"
-  },
-  "homepage": "https://github.com/polpware/polpware-fe-utilities#readme",
+  "version": "13.0.0",
   "peerDependencies": {
+    "@angular/common": "^13.2.0",
+    "@angular/core": "^13.2.0",
     "moment": "^2.0.0"
   },
-  "packageManager": "yarn@3.2.0",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
   "module": "fesm2015/polpware-fe-utilities.mjs",
   "es2020": "fesm2020/polpware-fe-utilities.mjs",
   "esm2020": "esm2020/polpware-fe-utilities.mjs",
@@ -39,8 +28,5 @@
       "default": "./fesm2020/polpware-fe-utilities.mjs"
     }
   },
-  "sideEffects": false,
-  "dependencies": {
-    "tslib": "^2.3.0"
-  }
+  "sideEffects": false
 }
