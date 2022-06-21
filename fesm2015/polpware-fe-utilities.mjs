@@ -341,7 +341,7 @@ function convertToUtc(dateInLocal, timeInLocal, timezone) {
         timeWrapper.subtract(timezone, 'hours');
     }
     // Convert to UTC time
-    let timeInUtc = new Date(Date.UTC(timeWrapper.year(), timeWrapper.month(), timeWrapper.day(), timeWrapper.hour(), timeWrapper.minute(), timeWrapper.second()));
+    let timeInUtc = new Date(Date.UTC(timeWrapper.year(), timeWrapper.month(), timeWrapper.date(), timeWrapper.hour(), timeWrapper.minute(), timeWrapper.second()));
     return timeInUtc;
 }
 /**
