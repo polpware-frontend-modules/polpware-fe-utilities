@@ -1,8 +1,8 @@
 {
   "name": "@polpware/fe-utilities",
-  "version": "9.4.1",
+  "version": "9.4.2",
   "description": "A set of utilties on url, array, string, date, promise, and more",
-  "main": "bundles/polpware-fe-utilities.umd.js",
+  "main": "index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/polpware/polpware-fe-utilities.git"
@@ -19,16 +19,27 @@
   "peerDependencies": {
     "moment": "^2.0.0"
   },
-  "module": "fesm5/polpware-fe-utilities.js",
-  "es2015": "fesm2015/polpware-fe-utilities.js",
-  "esm5": "esm5/polpware-fe-utilities.js",
-  "esm2015": "esm2015/polpware-fe-utilities.js",
-  "fesm5": "fesm5/polpware-fe-utilities.js",
-  "fesm2015": "fesm2015/polpware-fe-utilities.js",
+  "module": "fesm2015/polpware-fe-utilities.mjs",
+  "es2020": "fesm2020/polpware-fe-utilities.mjs",
+  "esm2020": "esm2020/polpware-fe-utilities.mjs",
+  "fesm2020": "fesm2020/polpware-fe-utilities.mjs",
+  "fesm2015": "fesm2015/polpware-fe-utilities.mjs",
   "typings": "polpware-fe-utilities.d.ts",
-  "metadata": "polpware-fe-utilities.metadata.json",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./polpware-fe-utilities.d.ts",
+      "esm2020": "./esm2020/polpware-fe-utilities.mjs",
+      "es2020": "./fesm2020/polpware-fe-utilities.mjs",
+      "es2015": "./fesm2015/polpware-fe-utilities.mjs",
+      "node": "./fesm2015/polpware-fe-utilities.mjs",
+      "default": "./fesm2020/polpware-fe-utilities.mjs"
+    }
+  },
   "sideEffects": false,
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^2.3.0"
   }
 }
