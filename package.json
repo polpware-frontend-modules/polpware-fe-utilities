@@ -1,19 +1,15 @@
 {
   "name": "@polpware/fe-utilities",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "peerDependencies": {
-    "@angular/common": "^15.0.0",
-    "@angular/core": "^15.0.0",
+    "@angular/common": "^16.0.0",
+    "@angular/core": "^16.0.0",
     "moment": "^2.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "module": "fesm2015/polpware-fe-utilities.mjs",
-  "es2020": "fesm2020/polpware-fe-utilities.mjs",
-  "esm2020": "esm2020/polpware-fe-utilities.mjs",
-  "fesm2020": "fesm2020/polpware-fe-utilities.mjs",
-  "fesm2015": "fesm2015/polpware-fe-utilities.mjs",
+  "module": "fesm2022/polpware-fe-utilities.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -21,11 +17,9 @@
     },
     ".": {
       "types": "./index.d.ts",
-      "esm2020": "./esm2020/polpware-fe-utilities.mjs",
-      "es2020": "./fesm2020/polpware-fe-utilities.mjs",
-      "es2015": "./fesm2015/polpware-fe-utilities.mjs",
-      "node": "./fesm2015/polpware-fe-utilities.mjs",
-      "default": "./fesm2020/polpware-fe-utilities.mjs"
+      "esm2022": "./esm2022/polpware-fe-utilities.mjs",
+      "esm": "./esm2022/polpware-fe-utilities.mjs",
+      "default": "./fesm2022/polpware-fe-utilities.mjs"
     }
   },
   "sideEffects": false
